@@ -24,16 +24,7 @@ def run_part1():
             print(f"{MOVE_NAMES[enemy_move]} ({moves[0]}) {str(enemy_move)} vs ({moves[1]}){MOVE_NAMES[player_move]}  "
                   f"{str(player_move)}")
 
-            if [enemy_move, player_move] in WIN_MOVES:
-                score = LOSS + player_move + 1
-                print(f"Enemy wins({str(score)}) - {LOSS} + {player_move}")
-            elif [player_move, enemy_move] in WIN_MOVES:
-                score = WIN + player_move + 1
-                print(f"Player wins({str(score)}) - {WIN} + {player_move}")
-            else:
-                score = DRAW + player_move + 1
-                print(f"Draw({str(score)}) - {DRAW} + {player_move}")
-
+            score = determine_score(enemy_move, player_move)
             total_score = total_score + score
 
     print("Score: " + str(total_score))
@@ -55,13 +46,18 @@ def run_part2():
             else:  # RESULT IS Z
                 player_move = 2 if enemy_move == 1 else 1 if enemy_move == 0 else 0
 
-            if [enemy_move, player_move] in WIN_MOVES:
-                score = LOSS + player_move + 1
-            elif [player_move, enemy_move] in WIN_MOVES:
-                score = WIN + player_move + 1
-            else:
-                score = DRAW + player_move + 1
+            score = determine_score(enemy_move, player_move)
 
             total_score = total_score + score
 
     print("Score: " + str(total_score))
+
+
+def determine_score(enemy_move, player_move):
+    if [enemy_move, player_move] in WIN_MOVES:
+        score = LOSS + player_move + 1
+    elif [player_move, enemy_move] in WIN_MOVES:
+        score = WIN + player_move + 1
+    else:
+        score = DRAW + player_move + 1
+    return score
