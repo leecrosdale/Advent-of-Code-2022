@@ -28,7 +28,6 @@ def run():
                 pairs += 1
                 print("PAIR")
 
-
             if second0 <= first0 <= second1:
                 print("Overlap")
                 overlaps += 1
@@ -41,7 +40,6 @@ def run():
             elif first0 <= second1 <= first1:
                 print("Overlap")
                 overlaps += 1
-
 
     print(f"Total Pairs: {pairs}")
     print(f"Total Overlaps: {overlaps}")
