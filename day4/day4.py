@@ -2,6 +2,34 @@ filename = './day4/data.txt'
 
 
 def run():
+    # input: a list of pairs of section assignments
+
+    # create a counter to keep track of the number of pairs in which
+    # one assignment fully contains the other
+    counter = 0
+
+    with open(filename) as fh:
+        for line in fh:
+
+            # loop through each pair of assignments
+            for (pair1, pair2) in line:
+                # split each pair into start and end values
+                start1, end1 = pair1.split("-")
+                start2, end2 = pair2.split("-")
+
+                # check if one assignment fully contains the other
+                if int(start1) <= int(start2) and int(end1) >= int(end2):
+                    # if it does, increment the counter
+                    counter = counter + 1
+                elif int(start2) <= int(start1) and int(end2) >= int(end1):
+                    # if it does, increment the counter
+                    counter = counter + 1
+
+            # return the counter as the result
+    return counter
+
+
+def run2():
     pairs = 0
     overlaps = 0
     with open(filename) as fh:
