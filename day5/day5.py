@@ -59,9 +59,8 @@ def run():
                     print(f"Char: {x}")
                     move_count -= 1
                     remove.append(x)
-                    # to_crate.insert(0, x)
-                    add.append(x)
-                    # to_crate.append(x)
+                    # to_crate.insert(0, x) # For Part 1 uncomment this
+                    add.append(x) # for part 1 comment this
 
             for x in remove:
                 crate.remove(x)
